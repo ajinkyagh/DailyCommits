@@ -28,10 +28,10 @@ jobs:
           NEXT_COUNT=$((CURRENT_COUNT + 1))
           sed -i "/commit number: /c\commit number: $NEXT_COUNT" "$FILE"
         fi
-        git config --global user.name "beesou777"
-        git config --global user.email "sbeesou@gmail.com"
+        git config --global user.name "ajinkyagh"
+        git config --global user.email "ajinkyagh@gmail.com"
         git add "$FILE"
         git commit -m "Hello, my name is bishwa shah nice to meet you"
-        git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/beesou777/mean-commit.git
+        git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@https://github.com/ajinkyagh/DailyCommits.git
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
