@@ -18,6 +18,8 @@ jobs:
 
       - name: Bump commit_number.md and push
         run: |
+          set -euo pipefail
+
           FILE="commit_number.md"
           if [ ! -f "$FILE" ]; then
             echo "Hello, my name is bishwa shah" > "$FILE"
@@ -33,4 +35,7 @@ jobs:
           git add "$FILE"
           git commit -m "Update commit number" || true
 
-          git push "x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/ajinkyagh/DailyCommits.git" HEAD:main
+          # Force a clean, correct remote and push
+          git remote remove origin || true
+          git remote add origin "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/ajinkyagh/DailyCommits.git"
+          git push origin HEAD:main
