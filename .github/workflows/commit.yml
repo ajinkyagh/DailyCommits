@@ -15,6 +15,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: main
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Bump commit_number.md and push
         run: |
@@ -22,7 +23,7 @@ jobs:
 
           FILE="commit_number.md"
           if [ ! -f "$FILE" ]; then
-            echo "Hello, my name is bishwa shah" > "$FILE"
+            echo "Hello, my name is Ajinkya" > "$FILE"
             echo "commit number: 1" >> "$FILE"
           else
             n=$(grep -oP 'commit number: \K\d+' "$FILE" || true)
@@ -34,8 +35,4 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add "$FILE"
           git commit -m "Update commit number" || true
-
-          # Force a clean, correct remote and push
-          git remote remove origin || true
-          git remote add origin "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/ajinkyagh/DailyCommits.git"
-          git push origin HEAD:main
+          git push origin main
