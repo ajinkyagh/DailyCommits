@@ -33,4 +33,4 @@ jobs:
           git add "$FILE"
           git commit -m "Update commit number" || true
 
-          git push "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/ajinkyagh/DailyCommits.git" HEAD:main
+          git push "x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/ajinkyagh/DailyCommits.git" HEAD:main
