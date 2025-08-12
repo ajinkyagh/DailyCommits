@@ -35,4 +35,9 @@ jobs:
           git add "$FILE"
           git commit -m "Update commit number" || echo "No changes to commit"
 
-          git push "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/ajinkyagh/DailyCommits.git" HEAD:main
+          # Ensure remote is correct (overwrites any bad https://https:// value)
+          git remote set-url origin "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/ajinkyagh/DailyCommits.git"
+          git remote -v
+
+          # Push to the branch (change 'main' if your default branch is different)
+          git push origin HEAD:main
